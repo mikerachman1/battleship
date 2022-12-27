@@ -4,4 +4,6 @@ const shipFactory = (length, hits = 0, sunk = false) => {
 
 const hit = (ship) => ship.hits + 1;
 
-export { shipFactory, hit };
+const isSunk = (ship) => (ship.hits === ship.length);
+
+export { shipFactory, hit, isSunk };
