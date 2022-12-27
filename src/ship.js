@@ -1,6 +1,4 @@
-const shipFactory = (length, hits = 0, sunk = false) => {
-  return { length, hits, sunk };
-};
+const shipFactory = (length, hits = 0, sunk = false) => ({ length, hits, sunk });
 
 const hit = (ship) => ship.hits + 1;
 
