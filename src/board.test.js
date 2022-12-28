@@ -26,4 +26,14 @@ test('placePiece puts large piece on board vertically', () => {
   expect(newBoard.board[3][3]).toBe('O');
   expect(newBoard.board[4][3]).toBe('O');
   expect(newBoard.board[7][3]).toBe('O');
+  expect(newBoard.board[3][4]).toBe('');
+  expect(newBoard.board[8][3]).toBe('');
+});
+
+test('placePiece returns message if there is placing conflict', () => {
+  let newBoard = gameBoardFactory();
+  const carrier = shipFactory(5);
+  newBoard.placePiece(carrier, [3,3], 'v');
+  const cruiser = shipFactory(5);
+  expect(newBoard.placePiece(cruiser, [3,3], 'v')).toBe('Error, this placement conflicts with another piece')
 });
