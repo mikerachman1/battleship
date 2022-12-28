@@ -63,6 +63,16 @@ test('calling receiveAttack with a hit sends hit function to ship', () => {
   expect(newBoard.board[4][3]).toBe('X')
 });
 
-test.todo('allSunk function returns false if not all ships are sunk');
+test('allSunk function returns false if not all ships are sunk', () => {
+  let newBoard = gameBoardFactory();
+  const carrier = shipFactory(5, 4);
+  newBoard.placePiece(carrier, [3,3], 'v');
+  expect(newBoard.allSunk()).toBe(false);
+});
 
-test.todo('allSunk function returns true if all ships are sunk');
+test('allSunk function returns true if all ships are sunk', () => {
+  let newBoard = gameBoardFactory();
+  const carrier = shipFactory(5, 5, true);
+  newBoard.placePiece(carrier, [3,3], 'v');
+  expect(newBoard.allSunk()).toBe(true);
+});
