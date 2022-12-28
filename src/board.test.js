@@ -60,6 +60,7 @@ test('calling receiveAttack with a hit sends hit function to ship', () => {
   newBoard.placePiece(carrier, [3,3], 'v');
   newBoard.receiveAttack([4, 3]);
   expect(carrier.hits).toBe(1);
+  expect(newBoard.board[4][3]).toBe('X')
 });
 
 test.todo('allSunk function returns false if not all ships are sunk');
