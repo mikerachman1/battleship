@@ -37,6 +37,7 @@ const gameBoardFactory = () => {
         ship.coords.forEach((coord) => {
           if (coord.includes(attackCoordinate[0]) && coord.includes(attackCoordinate[1])) {
             ship.object.hits = hit(ship.object);
+            // call is sunk
             board[attackCoordinate[0]][attackCoordinate[1]] = 'X';
           }
         });
@@ -44,12 +45,23 @@ const gameBoardFactory = () => {
     }
   };
 
-  return { board, misses, ships, placePiece, receiveAttack };
+  const allSunk = () => {
+    const sunkLog = [];
+    ships.forEach((ship) => {
+      sunkLog.push(ship.object.sunk);
+    });
+    return !sunkLog.includes(false);
+  };
+
+  return { board, misses, ships, placePiece, receiveAttack, allSunk };
 };
 
 export { gameBoardFactory };
 
 // let newBoard = gameBoardFactory();
-// const carrier = shipFactory(5);
+// const carrier = shipFactory(5, 4, true);
 // newBoard.placePiece(carrier, [3,3], 'v');
-// newBoard.receiveAttack([4, 3]);
+// const carrier2 = shipFactory(2, 2, true);
+// newBoard.placePiece(carrier2, [0,0], 'h');
+
+// console.log(newBoard.allSunk())
