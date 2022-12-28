@@ -1,7 +1,9 @@
-const shipFactory = (length, hits = 0, sunk = false) => ({ length, hits, sunk });
+const shipFactory = (length, hits = 0, sunk = false) => {
+  function hit() { this.hits += 1; }
 
-const hit = (ship) => ship.hits + 1;
+  function isSunk() { this.sunk = (this.hits === this.length); }
 
-const isSunk = (ship) => (ship.hits === ship.length);
+  return { length, hits, sunk, hit, isSunk }
+};
 
-export { shipFactory, hit, isSunk };
+export { shipFactory };
