@@ -1,5 +1,4 @@
 // '' for empty space, O for ship, X for ship hit, - for missed hit
-import { shipFactory } from "./ship.js";
 
 const gameBoardFactory = () => {
   const board = [...Array(10)].map(() => Array(10).fill(''));
