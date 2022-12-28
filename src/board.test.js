@@ -38,6 +38,13 @@ test('placePiece returns message if there is placing conflict', () => {
   expect(newBoard.placePiece(cruiser, [3,3], 'v')).toBe('Error, this placement conflicts with another piece')
 });
 
+test('placePiece adds ship and coords to ships array of gameboard', () => {
+  let newBoard = gameBoardFactory();
+  const patrolBoat = shipFactory(2);
+  newBoard.placePiece(patrolBoat, [0,0], 'h');
+  expect(newBoard.ships[0]).toStrictEqual({ object: patrolBoat, coords: [[0,0],[0,1]]})
+})
+
 test('calling receiveAttack with a miss records the missed coords and marks board', () => {
   let newBoard = gameBoardFactory();
   const carrier = shipFactory(5);
