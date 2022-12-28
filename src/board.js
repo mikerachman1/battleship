@@ -37,7 +37,7 @@ const gameBoardFactory = () => {
         ship.coords.forEach((coord) => {
           if (coord.includes(attackCoordinate[0]) && coord.includes(attackCoordinate[1])) {
             ship.object.hits = hit(ship.object);
-            // call is sunk
+            ship.object.sunk = isSunk(ship.object);
             board[attackCoordinate[0]][attackCoordinate[1]] = 'X';
           }
         });
