@@ -47,7 +47,13 @@ test('calling receiveAttack with a miss records the missed coords and marks boar
   expect(newBoard.board[0][0]).toBe('-')
 });
 
-test.todo('calling receiveAttack with a hit sends hit function to ship');
+test('calling receiveAttack with a hit sends hit function to ship', () => {
+  let newBoard = gameBoardFactory();
+  const carrier = shipFactory(5);
+  newBoard.placePiece(carrier, [3,3], 'v');
+  newBoard.receiveAttack([4, 3]);
+  expect(carrier.hits).toBe(1);
+});
 
 test.todo('allSunk function returns false if not all ships are sunk');
 
