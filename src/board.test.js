@@ -37,3 +37,18 @@ test('placePiece returns message if there is placing conflict', () => {
   const cruiser = shipFactory(5);
   expect(newBoard.placePiece(cruiser, [3,3], 'v')).toBe('Error, this placement conflicts with another piece')
 });
+
+test('calling receiveAttack with a miss records the missed coords and marks board', () => {
+  let newBoard = gameBoardFactory();
+  const carrier = shipFactory(5);
+  newBoard.placePiece(carrier, [3,3], 'v');
+  newBoard.receiveAttack([0, 0]);
+  expect(newBoard.misses[0]).toStrictEqual([0, 0]);
+  expect(newBoard.board[0][0]).toBe('-')
+});
+
+test.todo('calling receiveAttack with a hit sends hit function to ship');
+
+test.todo('allSunk function returns false if not all ships are sunk');
+
+test.todo('allSunk function returns true if all ships are sunk');
