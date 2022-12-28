@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "This goal of this project is to get comfortable with TDD. The game will be created using testing rather than console logging and visualizing dom manipulations.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "jest"
   },
