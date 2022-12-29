@@ -9,7 +9,7 @@ class Player {
 
   checkShipPlacement(ship, startCoordinate, direction) {
     const gameBoard = this.gameboard.board;
-    if (gameBoard[startCoordinate[0]][startCoordinate[1]] !== '') { return false; }
+    if (startCoordinate[0] > 9 || startCoordinate[1] > 9 || gameBoard[startCoordinate[0]][startCoordinate[1]] !== '') { return false; }
     const shipLength = ship.length - 1;
     let shipLengthIncrementor = 0;
     for (let i = 0; i < shipLength; i += 1) {
@@ -20,7 +20,7 @@ class Player {
       } else if (direction === 'v') {
         nextCoord = [startCoordinate[0] + shipLengthIncrementor, startCoordinate[1]];
       }
-      if (gameBoard[nextCoord[0]][nextCoord[1]] !== '') { return false; }
+      if (nextCoord[0] > 9 || nextCoord[1] > 9 || gameBoard[nextCoord[0]][nextCoord[1]] !== '') { return false; }
     }
     return true;
   }
