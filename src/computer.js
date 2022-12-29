@@ -17,6 +17,18 @@ class Computer extends Player {
     }
     this.gameboard.placePiece(ship, randomCoords, direction);
   }
+
+  checkHitsAndMisses(attackCoords) {
+    const hits = this.gameboard.hits;
+    const misses = this.gameboard.misses;
+    // use JSON stringify to search arrays for attackCoords
+  }
+
+  randomAttack(opponent) {
+    let randomCoords = [this.randomInt(10), this.randomInt(10)];
+    // check if attack is valid by seeing if it is in misses or hits arrays
+    while ()
+  }
 }
 
 export { Computer };
