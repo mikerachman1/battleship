@@ -1,6 +1,6 @@
 // '' for empty space, O for ship, X for ship hit, - for missed hit
 
-import { shipFactory } from "./ship";
+import { shipFactory } from "./ship.js";
 
 const gameBoardFactory = () => {
   const board = [...Array(10)].map(() => Array(10).fill(''));
@@ -10,13 +10,11 @@ const gameBoardFactory = () => {
   const buildShip = (length) => shipFactory(length);
 
   const placePiece = (ship, startCoordinate, direction = 'h') => {
-    const errorMsg = 'Error, this placement conflicts with another piece';
-    if (board[startCoordinate[0]][startCoordinate[1]] !== '') { return errorMsg; }
     board[startCoordinate[0]][startCoordinate[1]] = 'O';
     const shipLength = ship.length - 1;
     let shipLengthIncrementor = 0;
     const shipCoords = [startCoordinate];
-    for (let i = 0; i < shipLength; i++) {
+    for (let i = 0; i < shipLength; i += 1) {
       shipLengthIncrementor += 1;
       let nextCoord = '';
       if (direction === 'h') {
@@ -24,7 +22,6 @@ const gameBoardFactory = () => {
       } else if (direction === 'v') {
         nextCoord = [startCoordinate[0] + shipLengthIncrementor, startCoordinate[1]];
       }
-      if (board[nextCoord[0]][nextCoord[1]] !== '') { return errorMsg; }
       board[nextCoord[0]][nextCoord[1]] = 'O';
       shipCoords.push(nextCoord);
     }
