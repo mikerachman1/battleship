@@ -5,6 +5,7 @@ import { shipFactory } from "./ship.js";
 const gameBoardFactory = () => {
   const board = [...Array(10)].map(() => Array(10).fill(''));
   const misses = [];
+  const hits = [];
   const ships = [];
 
   const buildShip = (length) => shipFactory(length);
@@ -39,6 +40,7 @@ const gameBoardFactory = () => {
             ship.object.hit();
             ship.object.isSunk();
             board[attackCoordinate[0]][attackCoordinate[1]] = 'X';
+            hits.push(attackCoordinate);
           }
         });
       });
@@ -53,7 +55,7 @@ const gameBoardFactory = () => {
     return !sunkLog.includes(false);
   };
 
-  return { board, misses, ships, buildShip, placePiece, receiveAttack, allSunk };
+  return { board, misses, hits, ships, buildShip, placePiece, receiveAttack, allSunk };
 };
 
 export { gameBoardFactory };

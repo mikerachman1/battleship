@@ -63,6 +63,7 @@ test('calling receiveAttack with a hit sends hit function to ship', () => {
   newBoard.receiveAttack([4, 3]);
   expect(carrier.hits).toBe(1);
   expect(newBoard.board[4][3]).toBe('X')
+  expect(newBoard.hits).toStrictEqual([[4,3]])
 });
 
 test('recieveAttack calls isSunk on ships', () => {
