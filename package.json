@@ -20,6 +20,7 @@
   "homepage": "https://github.com/mikerachman1/battleship#readme",
   "devDependencies": {
     "@babel/preset-env": "^7.20.2",
+    "@types/jest": "^29.2.4",
     "css-loader": "^6.7.3",
     "eslint": "^8.30.0",
     "eslint-config-airbnb-base": "^15.0.0",
