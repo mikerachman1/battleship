@@ -34,6 +34,7 @@ const gameBoardFactory = () => {
       misses.push(attackCoordinate);
       board[attackCoordinate[0]][attackCoordinate[1]] = '-';
     } else if (board[attackCoordinate[0]][attackCoordinate[1]] === 'O') {
+      // refactor to use stringify to search for matching coords
       ships.forEach((ship) => {
         ship.coords.forEach((coord) => {
           if (coord.includes(attackCoordinate[0]) && coord.includes(attackCoordinate[1])) {
@@ -59,3 +60,8 @@ const gameBoardFactory = () => {
 };
 
 export { gameBoardFactory };
+
+// const array = [[1, 0], [2, 3], [0, 1]];
+// const stringArray = JSON.stringify(array)
+// console.log(stringArray)
+// console.log(stringArray.includes('[1,0]'))
