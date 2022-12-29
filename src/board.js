@@ -9,7 +9,7 @@ const gameBoardFactory = () => {
 
   const buildShip = (length) => shipFactory(length);
 
-  const placePiece = (ship, startCoordinate, direction) => {
+  const placePiece = (ship, startCoordinate, direction = 'h') => {
     const errorMsg = 'Error, this placement conflicts with another piece';
     if (board[startCoordinate[0]][startCoordinate[1]] !== '') { return errorMsg; }
     board[startCoordinate[0]][startCoordinate[1]] = 'O';

@@ -7,7 +7,7 @@ describe('gameBoardFactory can buiild ships', () => {
   const newBoard = gameBoardFactory();
   const newShip = newBoard.buildShip(5)
 
-  test.only('ship is built', () => {
+  test('ship is built', () => {
     expect(newShip.length).toBe(5);
   });
 
