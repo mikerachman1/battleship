@@ -13,6 +13,11 @@ describe('the computer places ships randomly', () => {
 });
 
 describe('the computer makes random attacks', () => {
-
+  const computer = new Computer;
+  const player = new Player;
+  const attackCoords = computer.randomAttack(player);
+  test('attack is logged on players board', () => {
+    expect(player.gameboard[attackCoords[0]][attackCoords[1]]).toBe('-')
+  })
 });
 
