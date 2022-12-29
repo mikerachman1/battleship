@@ -3,6 +3,16 @@
 import { gameBoardFactory } from "./board";
 import { shipFactory } from "./ship";
 
+describe('gameBoardFactory can buiild ships', () => {
+  const newBoard = gameBoardFactory();
+  const newShip = newBoard.buildShip(5)
+
+  test.only('ship is built', () => {
+    expect(newShip.length).toBe(5);
+  });
+
+})
+
 test('gameBoardFactory creates 10x10 game grid array', () => {
   let newBoard = gameBoardFactory();
   expect(newBoard.board.length).toBe(10);

@@ -1,9 +1,13 @@
 // '' for empty space, O for ship, X for ship hit, - for missed hit
 
+import { shipFactory } from "./ship";
+
 const gameBoardFactory = () => {
   const board = [...Array(10)].map(() => Array(10).fill(''));
   const misses = [];
   const ships = [];
+
+  const buildShip = (length) => shipFactory(length);
 
   const placePiece = (ship, startCoordinate, direction) => {
     const errorMsg = 'Error, this placement conflicts with another piece';
@@ -52,7 +56,7 @@ const gameBoardFactory = () => {
     return !sunkLog.includes(false);
   };
 
-  return { board, misses, ships, placePiece, receiveAttack, allSunk };
+  return { board, misses, ships, buildShip, placePiece, receiveAttack, allSunk };
 };
 
 export { gameBoardFactory };
