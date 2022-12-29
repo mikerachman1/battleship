@@ -12,21 +12,19 @@ class Computer extends Player {
     let direction = this.randomInt(2) ? 'h' : 'v';
     const ship = this.gameboard.buildShip(shipLength);
     while (this.checkShipPlacement(ship, randomCoords, direction) === false) {
-      console.log('had to try again')
       randomCoords = [this.randomInt(10), this.randomInt(10)];
       direction = this.randomInt(2) ? 'h' : 'v';
     }
     this.gameboard.placePiece(ship, randomCoords, direction);
-    console.log('success')
   }
 }
 
 export { Computer };
 
-const computer = new Computer;
-computer.randomPlacement(5);
-computer.randomPlacement(5);
-computer.randomPlacement(5);
-computer.randomPlacement(5);
-computer.randomPlacement(5);
-computer.randomPlacement(5);
+// const computer = new Computer;
+// computer.randomPlacement(5);
+// computer.randomPlacement(5);
+// computer.randomPlacement(5);
+// computer.randomPlacement(5);
+// computer.randomPlacement(5);
+// computer.randomPlacement(5);
