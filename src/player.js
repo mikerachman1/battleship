@@ -1,11 +1,11 @@
 import { gameBoardFactory } from "./board.js";
 
-const playerFactory = () => {
-  const gameboard = gameBoardFactory();
+class Player {
+  constructor() {
+    this.gameboard = gameBoardFactory();
 
-  const attack = (opponent, attackCoords) => { opponent.gameboard.receiveAttack(attackCoords); };
- 
-  return { gameboard, attack }
-};
+    this.attack = (opponent, attackCoords) => { opponent.gameboard.receiveAttack(attackCoords); };
+  }
+}
 
-export { playerFactory };
+export { Player };
