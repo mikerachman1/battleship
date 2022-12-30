@@ -5,6 +5,7 @@ class Player {
     this.gameboard = gameBoardFactory();
 
     this.attack = (opponent, attackCoords) => { opponent.gameboard.receiveAttack(attackCoords); };
+    this.pieces = [5, 4, 3, 3, 2];
   }
 
   checkShipPlacement(ship, startCoordinate, direction) {
