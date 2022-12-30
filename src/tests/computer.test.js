@@ -1,7 +1,7 @@
 /* eslint-disable */
 
-import { Computer } from "./computer";
-import { Player } from "./player";
+import { Computer } from "../computer";
+import { Player } from "../player";
 
 describe('the computer places ships randomly', () => {
   const computer = new Computer;

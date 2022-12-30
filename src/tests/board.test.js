@@ -1,7 +1,7 @@
 /* eslint-disable */
 
-import { gameBoardFactory } from "./board";
-import { shipFactory } from "./ship";
+import { gameBoardFactory } from "../board";
+import { shipFactory } from "../ship";
 
 describe('gameBoardFactory can buiild ships', () => {
   const newBoard = gameBoardFactory();

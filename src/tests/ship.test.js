@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { shipFactory, hit, isSunk } from "./ship";
+import { shipFactory, hit, isSunk } from "../ship";
 
 test('calling hit with ship returns new ship hit count', () => {
   let carrier = shipFactory(5);

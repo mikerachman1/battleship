@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import { Player } from "./player";
+import { Player } from "../player";
 
 describe('when a player is created', () => {
   const player = new Player;
