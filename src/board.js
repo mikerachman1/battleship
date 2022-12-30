@@ -49,6 +49,7 @@ const gameBoardFactory = () => {
   };
 
   const allSunk = () => {
+    if (ships.length === 0) { return false; }
     const sunkLog = [];
     ships.forEach((ship) => {
       sunkLog.push(ship.object.sunk);
