@@ -18,25 +18,27 @@ class Computer extends Player {
     this.gameboard.placePiece(ship, randomCoords, direction);
   }
 
-  checkHitsAndMisses(attackCoords) {
-    const hits = this.gameboard.hits;
-    const misses = this.gameboard.misses;
-    // use JSON stringify to search arrays for attackCoords
+  checkValidAttack(opponent, attackCoords) {
+    const hitsAndMisses = opponent.gameboard.hits.concat(opponent.gameboard.misses);
+    return !JSON.stringify(hitsAndMisses).includes(JSON.stringify(attackCoords));
   }
 
-  randomAttack(opponent) {
-    let randomCoords = [this.randomInt(10), this.randomInt(10)];
-    // check if attack is valid by seeing if it is in misses or hits arrays
-    while ()
-  }
+  // randomAttack(opponent) {
+  //   let randomCoords = [this.randomInt(10), this.randomInt(10)];
+  //   // check if attack is valid by seeing if it is in misses or hits arrays
+  //   while ()
+  // }
 }
 
 export { Computer };
 
 // const computer = new Computer;
-// computer.randomPlacement(5);
-// computer.randomPlacement(5);
-// computer.randomPlacement(5);
-// computer.randomPlacement(5);
-// computer.randomPlacement(5);
-// computer.randomPlacement(5);
+// const p1 = new Player;
+// p1.gameboard.placePiece(p1.gameboard.buildShip(2), [0, 0], 'h');
+// computer.attack(p1, [0,0]);
+// computer.attack(p1, [0,1]);
+
+// console.log(computer.checkValidAttack(p1, [0,0]));
+// console.log(computer.checkValidAttack(p1, [0,1]));
+// console.log(computer.checkValidAttack(p1, [1,0]));
+// console.log(computer.checkValidAttack(p1, [5,3]));
