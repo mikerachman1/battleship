@@ -17,7 +17,7 @@ describe('the computer makes random attacks', () => {
   const player = new Player;
   const attackCoords = computer.randomAttack(player);
   test('attack is logged on players board', () => {
-    expect(player.gameboard[attackCoords[0]][attackCoords[1]]).toBe('-')
+    expect(player.gameboard.board[attackCoords[0]][attackCoords[1]]).toBe('-')
   })
 });
 
