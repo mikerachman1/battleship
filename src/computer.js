@@ -11,15 +11,17 @@ class Computer extends Player {
     };
   }
 
-  randomPlacement(shipLength) {
-    let randomCoords = [this.randomInt(10), this.randomInt(10)];
-    let direction = this.randomInt(2) ? 'h' : 'v';
-    const ship = this.gameboard.buildShip(shipLength);
-    while (this.checkShipPlacement(ship, randomCoords, direction) === false) {
-      randomCoords = [this.randomInt(10), this.randomInt(10)];
-      direction = this.randomInt(2) ? 'h' : 'v';
-    }
-    this.gameboard.placePiece(ship, randomCoords, direction);
+  randomPlacement() {
+    this.pieces.forEach((piece) => {
+      let randomCoords = [this.randomInt(10), this.randomInt(10)];
+      let direction = this.randomInt(2) ? 'h' : 'v';
+      const ship = this.gameboard.buildShip(piece);
+      while (this.checkShipPlacement(ship, randomCoords, direction) === false) {
+        randomCoords = [this.randomInt(10), this.randomInt(10)];
+        direction = this.randomInt(2) ? 'h' : 'v';
+      }
+      this.gameboard.placePiece(ship, randomCoords, direction);
+    });
   }
 
   randomAttack(opponent) {
@@ -33,3 +35,6 @@ class Computer extends Player {
 }
 
 export { Computer };
+
+// const comp = new Computer();
+// console.log(comp.pieces)

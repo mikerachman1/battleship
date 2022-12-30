@@ -7,8 +7,8 @@ describe('the computer places ships randomly', () => {
   const computer = new Computer;
   
   test('ship is placed on board', () => {
-    computer.randomPlacement(5);
-    expect(computer.gameboard.ships.length).toBe(1);
+    computer.randomPlacement();
+    expect(computer.gameboard.ships.length).toBe(5);
   });
 });
 
