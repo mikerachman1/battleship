@@ -2,6 +2,7 @@ const infoBox = () => {
   const text = document.createElement('p');
   const section = document.createElement('section');
   section.className = 'info-box';
+  text.className = 'info-text';
   section.appendChild(text);
   return section;
 };

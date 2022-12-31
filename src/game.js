@@ -1,5 +1,5 @@
 import { Computer } from "./computer.js";
-import { displayUserShips } from "./domInteraction.js";
+import { displayUserShips, updateInfoBox } from "./domInteraction.js";
 import { Player } from "./player.js";
 
 const gameLoop = () => {
@@ -20,6 +20,7 @@ const gameLoop = () => {
     player.gameboard.placePiece(player.gameboard.buildShip(2), [7, 5], 'h');
     // 0 = player, 1 = computer
     displayUserShips(player.gameboard.ships);
+    updateInfoBox('Is this thing on?')
     let turn = 1;
     // while (checkEndGame() === false) {
     //   turn = changeTurn(turn);

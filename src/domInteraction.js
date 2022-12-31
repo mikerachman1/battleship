@@ -14,4 +14,9 @@ const displayUserShips = (playerShips) => {
   });
 };
 
-export { displayUserShips };
+const updateInfoBox = (text) => {
+  const infoBoxText = document.querySelector('.info-text');
+  infoBoxText.textContent = text;
+};
+
+export { displayUserShips, updateInfoBox };
