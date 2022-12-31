@@ -26,3 +26,7 @@ h1 {
   border: 1px solid black;
   width: 100%;
 }
+
+.ship {
+  background-color: rgb(255, 0, 0);
+}
