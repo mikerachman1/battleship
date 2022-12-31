@@ -19,4 +19,18 @@ const updateInfoBox = (text) => {
   infoBoxText.textContent = text;
 };
 
-export { displayUserShips, updateInfoBox };
+const getPlayerAttack = (cell) => {
+  const row = cell.parentNode;
+  const rowIndex = Array.from(row.parentNode.children).indexOf(row);
+  const colIndex = Array.from(cell.parentNode.children).indexOf(cell);
+  return [rowIndex, colIndex];
+};
+
+const addListnersToComputerBoard = () => {
+  const computerGridCells = document.querySelectorAll('.computer-grid .col');
+  computerGridCells.forEach((cell) => {
+    cell.addEventListener('click', () => { getPlayerAttack(cell); });
+  });
+};
+
+export { displayUserShips, updateInfoBox, addListnersToComputerBoard };
