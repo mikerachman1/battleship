@@ -28,7 +28,7 @@ const gameLoop = () => {
       }
     }
   };
-  return { player, computer, play, checkEndGame, changeTurn};
+  return { player, computer, play, checkEndGame, changeTurn };
 };
 
 export { gameLoop };
