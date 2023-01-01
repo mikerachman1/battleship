@@ -33,4 +33,16 @@ const addListnersToComputerBoard = () => {
   });
 };
 
-export { displayUserShips, updateInfoBox, addListnersToComputerBoard };
+const updateGameGrid = (gameboard, name) => {
+  gameboard.forEach((row) => {
+    const rowIndex = gameboard.indexOf(row);
+    row.forEach((col) => {
+      const colIndex = row.indexOf(col);
+      const gridCell = document.querySelector(`.${name}-grid :nth-child(${rowIndex + 1}) :nth-child(${colIndex + 1})`);
+      if (col === 'X') { gridCell.innerHTML = 'X'; }
+      if (col === '-') { gridCell.innerHTML = '/'; }
+    });
+  });
+};
+
+export { displayUserShips, updateInfoBox, addListnersToComputerBoard, updateGameGrid };

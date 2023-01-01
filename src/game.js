@@ -1,5 +1,5 @@
 import { Computer } from "./computer.js";
-import { addListnersToComputerBoard, displayUserShips, updateInfoBox } from "./domInteraction.js";
+import { addListnersToComputerBoard, displayUserShips, updateGameGrid, updateInfoBox } from "./domInteraction.js";
 import { Player } from "./player.js";
 
 const gameLoop = () => {
@@ -22,6 +22,9 @@ const gameLoop = () => {
     displayUserShips(player.gameboard.ships);
     updateInfoBox('Is this thing on?');
     addListnersToComputerBoard();
+
+    computer.randomAttack(player);
+    updateGameGrid(player.gameboard.board, 'player');
     let turn = 1;
     // while (checkEndGame() === false) {
     //   turn = changeTurn(turn);
