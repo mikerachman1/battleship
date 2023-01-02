@@ -10,7 +10,7 @@ const gameLoop = () => {
 
   const changeTurn = (currentTurn) => (currentTurn ? 0 : 1);
 
-  const play = () => {
+  const play = async () => {
     computer.randomPlacement();
     // to be replaced by user actually placing ships through UI
     player.gameboard.placePiece(player.gameboard.buildShip(5), [0, 0], 'h');
@@ -21,10 +21,12 @@ const gameLoop = () => {
     // 0 = player, 1 = computer
     displayUserShips(player.gameboard.ships);
     updateInfoBox('Is this thing on?');
-    addListnersToComputerBoard();
+    addListnersToComputerBoard(player, computer);
 
-    computer.randomAttack(player);
-    updateGameGrid(player.gameboard.board, 'player');
+
+    // const playerAttackCoords = await getPlayerAttack();
+    // player.attack(computer, playerAttackCoords);
+    // updateGameGrid(computer.gameboard.board, 'computer');
     let turn = 1;
     // while (checkEndGame() === false) {
     //   turn = changeTurn(turn);

@@ -19,17 +19,22 @@ const updateInfoBox = (text) => {
   infoBoxText.textContent = text;
 };
 
-const getPlayerAttack = (cell) => {
+const playRound = (cell, player, computer) => {
   const row = cell.parentNode;
   const rowIndex = Array.from(row.parentNode.children).indexOf(row);
   const colIndex = Array.from(cell.parentNode.children).indexOf(cell);
-  return [rowIndex, colIndex];
+  console.log([rowIndex, colIndex])
+  player.attack(computer, [rowIndex, colIndex]);
+  updateGameGrid(computer.gameboard.board, 'computer');
+
+  computer.randomAttack(player);
+  updateGameGrid(player.gameboard.board, 'player');
 };
 
-const addListnersToComputerBoard = () => {
+const addListnersToComputerBoard = (player, computer) => {
   const computerGridCells = document.querySelectorAll('.computer-grid .col');
   computerGridCells.forEach((cell) => {
-    cell.addEventListener('click', () => { getPlayerAttack(cell); });
+    cell.addEventListener('click', () => { playRound(cell, player, computer); });
   });
 };
 
