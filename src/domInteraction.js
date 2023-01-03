@@ -19,34 +19,37 @@ const updateInfoBox = (text) => {
   infoBoxText.textContent = text;
 };
 
+const checkEndGame = (player, computer) => (player.gameboard.allSunk() || computer.gameboard.allSunk());
+
+const updateGameGrid = (gameboard, name, coords) => {
+  const gameboardCell = gameboard[coords[0]][coords[1]];
+  const gridCell = document.querySelector(`.${name}-grid :nth-child(${coords[0] + 1}) :nth-child(${coords[1] + 1})`);
+  if (gameboardCell === 'X') { gridCell.innerHTML = 'X'; }
+  if (gameboardCell === '-') { gridCell.innerHTML = '/'; }
+};
+
 const playRound = (cell, player, computer) => {
   const row = cell.parentNode;
   const rowIndex = Array.from(row.parentNode.children).indexOf(row);
   const colIndex = Array.from(cell.parentNode.children).indexOf(cell);
-  console.log([rowIndex, colIndex])
-  player.attack(computer, [rowIndex, colIndex]);
-  updateGameGrid(computer.gameboard.board, 'computer');
+  const playerCoords = [rowIndex, colIndex];
 
-  computer.randomAttack(player);
-  updateGameGrid(player.gameboard.board, 'player');
+  console.log(playerCoords)
+  console.log(computer.gameboard.board[rowIndex][colIndex])
+  
+  player.attack(computer, [rowIndex, colIndex]);
+  updateGameGrid(computer.gameboard.board, 'computer', playerCoords);
+
+  const computerCoords = computer.randomAttack(player);
+  updateGameGrid(player.gameboard.board, 'player', computerCoords);
+
+  if (checkEndGame(player, computer)) { return updateInfoBox('GAME OVER'); }
 };
 
 const addListnersToComputerBoard = (player, computer) => {
   const computerGridCells = document.querySelectorAll('.computer-grid .col');
   computerGridCells.forEach((cell) => {
     cell.addEventListener('click', () => { playRound(cell, player, computer); });
-  });
-};
-
-const updateGameGrid = (gameboard, name) => {
-  gameboard.forEach((row) => {
-    const rowIndex = gameboard.indexOf(row);
-    row.forEach((col) => {
-      const colIndex = row.indexOf(col);
-      const gridCell = document.querySelector(`.${name}-grid :nth-child(${rowIndex + 1}) :nth-child(${colIndex + 1})`);
-      if (col === 'X') { gridCell.innerHTML = 'X'; }
-      if (col === '-') { gridCell.innerHTML = '/'; }
-    });
   });
 };
 
