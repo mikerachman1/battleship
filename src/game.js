@@ -1,5 +1,5 @@
 import { Computer } from "./computer.js";
-import { addListnersToComputerBoard, displayUserShips, updateGameGrid, updateInfoBox } from "./domInteraction.js";
+import { addListnersToComputerBoard, displayShips, updateInfoBox } from "./domInteraction.js";
 import { Player } from "./player.js";
 
 const gameLoop = () => {
@@ -15,8 +15,8 @@ const gameLoop = () => {
     player.gameboard.placePiece(player.gameboard.buildShip(3), [3, 3], 'v');
     player.gameboard.placePiece(player.gameboard.buildShip(2), [7, 5], 'h');
 
-    displayUserShips(player.gameboard.ships);
-    updateInfoBox('Is this thing on?');
+    displayShips(player.gameboard.ships, 'player');
+    updateInfoBox('Click a cell on the Enemies board to attack!')
     addListnersToComputerBoard(player, computer);
   };
   return { player, computer, play };

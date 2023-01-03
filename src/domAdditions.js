@@ -62,4 +62,5 @@ const addBoard = () => {
   contentDiv.appendChild(board());
 };
 
+// eslint-disable-next-line import/prefer-default-export
 export { addBoard };
