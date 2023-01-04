@@ -8,6 +8,11 @@ const gameBoardFactory = () => {
   const hits = [];
   const ships = [];
 
+  const getShipName = (shipIndex) => {
+    const shipNames = ['Carrier', 'Battleship', 'Destroyer', 'Submarine', 'Patrol Boat'];
+    return shipNames[shipIndex];
+  };
+
   const buildShip = (length) => shipFactory(length);
 
   const placePiece = (ship, startCoordinate, direction = 'h') => {
@@ -37,7 +42,7 @@ const gameBoardFactory = () => {
     } else if (board[attackCoordinate[0]][attackCoordinate[1]] === 'O') {
       ships.forEach((ship) => {
         ship.coords.forEach((coord) => {
-          const coordString = JSON.stringify(coord)
+          const coordString = JSON.stringify(coord);
           if (coordString.includes(JSON.stringify(attackCoordinate))) {
             ship.object.hit();
             ship.object.isSunk();
@@ -58,7 +63,7 @@ const gameBoardFactory = () => {
     return !sunkLog.includes(false);
   };
 
-  return { board, misses, hits, ships, buildShip, placePiece, receiveAttack, allSunk };
+  return { board, misses, hits, ships, getShipName, buildShip, placePiece, receiveAttack, allSunk };
 };
 
 export { gameBoardFactory };
