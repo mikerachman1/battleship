@@ -129,7 +129,7 @@ const updateGameGrid = (gameboard, name, coords) => {
   const gameboardCell = gameboard[coords[0]][coords[1]];
   const gridCell = document.querySelector(`.${name}-grid :nth-child(${coords[0] + 1}) :nth-child(${coords[1] + 1})`);
   if (gameboardCell === 'X') { gridCell.innerHTML = 'X'; }
-  if (gameboardCell === '-') { gridCell.innerHTML = '/'; }
+  if (gameboardCell === '-') { gridCell.innerHTML = 'O'; }
   gridCell.style.pointerEvents = 'none';
 };
 
@@ -180,6 +180,8 @@ const addListnersToComputerBoard = (player, computer) => {
     const myReference = () => playRound(cell, player, computer);
     cell.addEventListener('click', myReference);
     references.push(myReference);
+    cell.addEventListener('mouseover', () => { cell.classList.add('hover'); });
+    cell.addEventListener('mouseleave', () => { cell.classList.remove('hover'); });
   });
   return references;
 };
