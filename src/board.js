@@ -27,6 +27,7 @@ const gameBoardFactory = () => {
       shipCoords.push(nextCoord);
     }
     ships.push({ object: ship, coords: shipCoords });
+    return shipCoords;
   };
 
   const receiveAttack = (attackCoordinate) => {

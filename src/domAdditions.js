@@ -7,13 +7,20 @@ const infoBox = () => {
   return section;
 };
 
-// const rotateShipBtn = () => {
-//   const infoBox = document.querySelector('.info-box');
-//   const rotateButton = document.createElement('button');
-//   rotateButton.className = 'rotate-ship';
-//   rotateButton.textContent = 'Rotate Ship';
-//   infoBox.appendChild(rotateButton);
-// };
+const rotateShipBtn = () => {
+  const infoBox = document.querySelector('.info-box');
+  const rotateContainer = document.createElement('div');
+  rotateContainer.className = 'rotate-container';
+  const rotateButton = document.createElement('button');
+  rotateButton.className = 'rotate-ship';
+  rotateButton.textContent = 'Rotate Ship';
+  const rotateDirection = document.createElement('span');
+  rotateDirection.className = 'rotate-direction';
+  rotateDirection.textContent = 'Horizontal';
+  rotateContainer.appendChild(rotateButton);
+  rotateContainer.appendChild(rotateDirection);
+  infoBox.appendChild(rotateContainer);
+};
 
 const boardRow = () => {
   const row = document.createElement('div');
@@ -59,6 +66,7 @@ const board = () => {
 const addBoard = () => {
   const contentDiv = document.querySelector('#content');
   contentDiv.appendChild(infoBox());
+  rotateShipBtn();
   contentDiv.appendChild(board());
 };
 
