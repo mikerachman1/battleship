@@ -168,6 +168,17 @@ const findShipIndex = (player, searchCoords) => {
   return index;
 };
 
+const updateEnemyAttackInfo = (player, computerAttackCoords, compAttackResult) => {
+  if (compAttackResult === 'X') {
+    const shipIndex = findShipIndex(player, computerAttackCoords);
+    if (player.gameboard.ships[shipIndex].object.sunk) {
+      updateInfoBox(`The enemy sunk your ${player.gameboard.getShipName(shipIndex)}!`);
+    } else {
+      updateInfoBox(`The enemy hit your ${player.gameboard.getShipName(shipIndex)}!`);
+    }
+  } else { updateInfoBox('The enemy missed their shot!'); }
+};
+
 const playRound = (cell, player, computer) => {
   const row = cell.parentNode;
   const rowIndex = Array.from(row.parentNode.children).indexOf(row);
@@ -180,10 +191,7 @@ const playRound = (cell, player, computer) => {
 
   const computerCoords = computer.randomAttack(player);
   const compAttackResult = updateGameGrid(player.gameboard.board, 'player', computerCoords);
-  if (compAttackResult === 'X') {
-    const shipIndex = findShipIndex(player, computerCoords);
-    updateInfoBox(`The enemy hit your ${player.gameboard.getShipName(shipIndex)}!`);
-  } else { updateInfoBox('The enemy missed their shot!'); }
+  updateEnemyAttackInfo(player, computerCoords, compAttackResult);
 
   if (checkEndGame(player, computer)) {
     updateInfoBox(determineWinner(player));
