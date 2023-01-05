@@ -176,6 +176,13 @@ const findShipIndex = (player, searchCoords) => {
   return index;
 };
 
+const determinePriorAttackResult = (player) => {
+  const { results } = player.gameboard;
+  if (results.length === 0) { return null; }
+  const lastAttack = results.slice(-1).toString();
+  return lastAttack;
+};
+
 const updateEnemyAttackInfo = (player, computerAttackCoords, compAttackResult) => {
   if (compAttackResult === 'X') {
     const shipIndex = findShipIndex(player, computerAttackCoords);
@@ -197,7 +204,13 @@ const playRound = (cell, player, computer) => {
   updateGameGrid(computer.gameboard.board, 'computer', playerCoords);
   displayEnemyShipIfSunk(computer.gameboard.ships);
 
-  const computerCoords = computer.randomAttack(player);
+  let computerCoords;
+  if (determinePriorAttackResult(player) === 'X') {
+    const previousHitCoords = player.gameboard.hits.slice(-1).flat();
+    computerCoords = computer.adjacentAttack(player, previousHitCoords);
+  } else {
+    computerCoords = computer.randomAttack(player);
+  }
   const compAttackResult = updateGameGrid(player.gameboard.board, 'player', computerCoords);
   updateEnemyAttackInfo(player, computerCoords, compAttackResult);
 

@@ -7,6 +7,7 @@ const gameBoardFactory = () => {
   const board = [...Array(10)].map(() => Array(10).fill(''));
   const misses = [];
   const hits = [];
+  const results = [];
   const ships = [];
 
   const getShipName = (shipIndex) => {
@@ -40,6 +41,7 @@ const gameBoardFactory = () => {
     if (board[attackCoordinate[0]][attackCoordinate[1]] !== 'O') {
       misses.push(attackCoordinate);
       board[attackCoordinate[0]][attackCoordinate[1]] = '-';
+      results.push('-');
     } else if (board[attackCoordinate[0]][attackCoordinate[1]] === 'O') {
       ships.forEach((ship) => {
         ship.coords.forEach((coord) => {
@@ -49,6 +51,7 @@ const gameBoardFactory = () => {
             ship.object.isSunk();
             board[attackCoordinate[0]][attackCoordinate[1]] = 'X';
             hits.push(attackCoordinate);
+            results.push('X');
           }
         });
       });
@@ -65,7 +68,7 @@ const gameBoardFactory = () => {
   };
 
   return {
-    board, misses, hits, ships, getShipName, buildShip, placePiece, receiveAttack, allSunk,
+    board, misses, hits, results, ships, getShipName, buildShip, placePiece, receiveAttack, allSunk,
   };
 };
 
