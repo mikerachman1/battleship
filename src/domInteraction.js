@@ -25,6 +25,14 @@ const updateInfoBox = (text) => {
   infoBoxText.textContent = text;
 };
 
+const addNewGameButton = () => {
+  const newGameButton = document.createElement('button');
+  newGameButton.innerHTML = 'Start New Game';
+  newGameButton.className = 'new-game';
+  document.querySelector('.info-box').appendChild(newGameButton);
+  newGameButton.addEventListener('click', () => { window.location.reload(); });
+};
+
 const toggleRotateShip = () => {
   const rotateDirectionText = document.querySelector('.rotate-direction');
   (rotateDirectionText.textContent === 'Horizontal') ? rotateDirectionText.textContent = 'Vertical' : rotateDirectionText.textContent = 'Horizontal';
@@ -197,6 +205,7 @@ const playRound = (cell, player, computer) => {
     updateInfoBox(determineWinner(player));
     displayShips(computer.gameboard.ships, 'computer');
     makeCellsNotClickable();
+    addNewGameButton();
   }
 };
 
