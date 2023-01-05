@@ -1,6 +1,7 @@
-// '' for empty space, O for ship, X for ship hit, - for missed hit
+/* eslint-disable import/extensions */
+/* eslint-disable import/prefer-default-export */
 
-import { shipFactory } from "./ship.js";
+import { shipFactory } from './ship.js';
 
 const gameBoardFactory = () => {
   const board = [...Array(10)].map(() => Array(10).fill(''));
@@ -63,7 +64,9 @@ const gameBoardFactory = () => {
     return !sunkLog.includes(false);
   };
 
-  return { board, misses, hits, ships, getShipName, buildShip, placePiece, receiveAttack, allSunk };
+  return {
+    board, misses, hits, ships, getShipName, buildShip, placePiece, receiveAttack, allSunk,
+  };
 };
 
 export { gameBoardFactory };

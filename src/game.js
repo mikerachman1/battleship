@@ -1,5 +1,8 @@
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable import/extensions */
+/* eslint-disable quotes */
 import { Computer } from "./computer.js";
-import { addListnersToComputerBoard, displayShips, getPlayerShips, updateInfoBox } from "./domInteraction.js";
+import { addListnersToComputerBoard, getPlayerShips, updateInfoBox } from "./domInteraction.js";
 import { Player } from "./player.js";
 
 const gameLoop = () => {
@@ -8,22 +11,11 @@ const gameLoop = () => {
 
   const play = async () => {
     computer.randomPlacement();
-    // to be replaced by user actually placing ships through UI
-    // player.gameboard.placePiece(player.gameboard.buildShip(5), [0, 0], 'h');
-    // player.gameboard.placePiece(player.gameboard.buildShip(4), [0, 9], 'v');
-    // player.gameboard.placePiece(player.gameboard.buildShip(3), [3, 0], 'v');
-    // player.gameboard.placePiece(player.gameboard.buildShip(3), [3, 3], 'v');
-    // player.gameboard.placePiece(player.gameboard.buildShip(2), [7, 5], 'h');
-    // displayShips(player.gameboard.ships, 'player');
     await getPlayerShips(player);
-
     updateInfoBox('Click a cell on the Enemies board to attack!');
     addListnersToComputerBoard(player, computer);
   };
-  return { player, computer, play };
+  return { play };
 };
 
 export { gameLoop };
-
-// const newgame = gameLoop();
-// newgame.play();

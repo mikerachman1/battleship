@@ -222,4 +222,6 @@ const addListnersToComputerBoard = (player, computer) => {
   return references;
 };
 
-export { displayShips, updateInfoBox, addListnersToComputerBoard, getPlayerShips };
+export {
+  displayShips, updateInfoBox, addListnersToComputerBoard, getPlayerShips,
+};

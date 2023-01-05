@@ -8,7 +8,7 @@ const infoBox = () => {
 };
 
 const rotateShipBtn = () => {
-  const infoBox = document.querySelector('.info-box');
+  const domInfoBox = document.querySelector('.info-box');
   const rotateContainer = document.createElement('div');
   rotateContainer.className = 'rotate-container';
   const rotateButton = document.createElement('button');
@@ -19,7 +19,7 @@ const rotateShipBtn = () => {
   rotateDirection.textContent = 'Horizontal';
   rotateContainer.appendChild(rotateButton);
   rotateContainer.appendChild(rotateDirection);
-  infoBox.appendChild(rotateContainer);
+  domInfoBox.appendChild(rotateContainer);
 };
 
 const boardRow = () => {

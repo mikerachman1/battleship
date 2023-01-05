@@ -1,11 +1,13 @@
-import { gameBoardFactory } from "./board.js";
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable import/extensions */
+import { gameBoardFactory } from './board.js';
 
 class Player {
   constructor() {
     this.gameboard = gameBoardFactory();
 
     this.attack = (opponent, attackCoords) => { opponent.gameboard.receiveAttack(attackCoords); };
-    this.placeShip = (ship, startCoordinate, direction) => { 
+    this.placeShip = (ship, startCoordinate, direction) => {
       this.gameboard.placePiece(ship, startCoordinate, direction);
     };
     this.pieces = [5, 4, 3, 3, 2];

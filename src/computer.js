@@ -1,4 +1,6 @@
-import { Player } from "./player.js";
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable import/extensions */
+import { Player } from './player.js';
 
 class Computer extends Player {
   constructor() {
@@ -35,6 +37,3 @@ class Computer extends Player {
 }
 
 export { Computer };
-
-// const comp = new Computer();
-// console.log(comp.pieces)

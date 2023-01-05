@@ -1,21 +1,27 @@
 /* eslint-disable */
-import { shipFactory, hit, isSunk } from "../ship";
+import { shipFactory } from "../ship";
 
-test('calling hit with ship returns new ship hit count', () => {
+describe('ship can take hit', () => {
   let carrier = shipFactory(5);
-  expect(carrier.hits).toBe(0);
-  carrier.hit();
-  expect(carrier.hits).toBe(1);
+
+  test('calling hit with ship returns new ship hit count', () => {
+    expect(carrier.hits).toBe(0);
+    carrier.hit();
+    expect(carrier.hits).toBe(1);
+  });
 });
 
-test('calling isSunk returns true for hits === length', () => {
+describe('ships have isSunk function', () => {
   let submarine = shipFactory(3, 3);
-  submarine.isSunk()
-  expect(submarine.sunk).toBe(true);
-});
+  let destroyer = shipFactory(3, 1);
 
-test('calling isSunk returns false for hits < length', () => {
-  let submarine = shipFactory(3, 1);
-  submarine.isSunk()
-  expect(submarine.sunk).toBe(false);
+  test('calling isSunk returns true for hits === length', () => {
+    submarine.isSunk()
+    expect(submarine.sunk).toBe(true);
+  });
+
+  test('calling isSunk returns false for hits < length', () => {
+    destroyer.isSunk()
+    expect(destroyer.sunk).toBe(false);
+  });
 });
