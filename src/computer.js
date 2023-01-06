@@ -37,20 +37,26 @@ class Computer extends Player {
 
   adjacentAttack(opponent, previousHit) {
     const possibleNextAttacks = [];
-    const onBoardAttacks = [];
+    const legalAttacks = [];
     possibleNextAttacks.push([previousHit[0] + 1, previousHit[1]]);
     possibleNextAttacks.push([previousHit[0] - 1, previousHit[1]]);
     possibleNextAttacks.push([previousHit[0], previousHit[1] + 1]);
     possibleNextAttacks.push([previousHit[0], previousHit[1] - 1]);
     possibleNextAttacks.forEach((coord) => {
-      if (coord[0] < 10 && coord[1] < 10) { onBoardAttacks.push(coord); }
+      if (coord[0] < 10 && coord[1] < 10 && this.checkValidAttack(opponent, coord)) {
+        legalAttacks.push(coord);
+      }
     });
-    const nextAttack = onBoardAttacks[this.randomInt(onBoardAttacks.length)];
-    if (this.checkValidAttack(opponent, nextAttack) === true) {
-      this.attack(opponent, nextAttack);
-      return nextAttack;
+    if (legalAttacks.length === 0) { return this.randomAttack(opponent); }
+    let nextAttack = legalAttacks[this.randomInt(legalAttacks.length)];
+    let i = 0;
+    while (this.checkValidAttack(opponent, nextAttack) === false) {
+      i += 1;
+      if (i >= legalAttacks.length) { return this.randomAttack(opponent); }
+      nextAttack = legalAttacks[i];
     }
-    return this.randomAttack(opponent);
+    this.attack(opponent, nextAttack);
+    return nextAttack;
   }
 }
 
