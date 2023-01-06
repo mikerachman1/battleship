@@ -136,7 +136,10 @@ const determineWinner = (player) => {
 const updateGameGrid = (gameboard, name, coords) => {
   const gameboardCell = gameboard[coords[0]][coords[1]];
   const gridCell = document.querySelector(`.${name}-grid :nth-child(${coords[0] + 1}) :nth-child(${coords[1] + 1})`);
-  if (gameboardCell === 'X') { gridCell.innerHTML = 'X'; }
+  if (gameboardCell === 'X') {
+    gridCell.innerHTML = 'X';
+    gridCell.classList.add('hit');
+  }
   if (gameboardCell === '-') { gridCell.innerHTML = 'O'; }
   gridCell.style.pointerEvents = 'none';
   return gridCell.innerHTML;
@@ -150,6 +153,7 @@ const displayEnemyShipIfSunk = (computerShips) => {
         const col = shipCoord[1];
         const coordBox = document.querySelector(`.computer-grid :nth-child(${row + 1}) :nth-child(${col + 1})`);
         coordBox.classList.add('ship');
+        coordBox.classList.remove('hit');
       });
     }
   });
